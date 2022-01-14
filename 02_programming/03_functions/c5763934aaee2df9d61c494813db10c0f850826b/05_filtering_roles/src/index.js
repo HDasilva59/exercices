@@ -23,7 +23,7 @@ let i = 0;
 function filteredRoles(list = persons, role = "Teacher") {
   // Code the function here.
   while (i <= list.length){
-    if (list[i].role === "Teacher") {
+    if (list[i].role === role) {
       tab_t.push(list[i].name);
     }
   }
