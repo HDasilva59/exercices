@@ -1,3 +1,5 @@
+const { TestWatcher } = require("jest");
+
 const persons = [
   {
     name: "Florian",
@@ -17,20 +19,23 @@ const persons = [
   },
 ];
 
-const tab_t = [];
-let i = 0;
-
-function filteredRoles(list = persons, role = "Teacher") {
-  // Code the function here.
-  while (i <= list.length){
-    if (list[i].role === role) {
-      tab_t.push(list[i].name);
-    }
+function filteredRoles(list = persons, personrole = "Teacher") {
+  const filteredpersons = [];
+  if (list[0].role === personrole){
+    filteredpersons.push(list[0]);
   }
-  return tab_t;
+  if (list[1].role === personrole){
+    filteredpersons.push(list[1]);
+  }
+  if (list[2].role === personrole){
+    filteredpersons.push(list[2]);
+  }
+  if (list[3].role === personrole){
+    filteredpersons.push(list[3]);
+  }
+  console.log(filteredpersons);
+  return filteredpersons;
 }
-
-filteredRoles(persons, "Teacher");
 
 // Do not remove lines below, it is for tests
 module.exports = filteredRoles;

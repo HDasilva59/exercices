@@ -20,7 +20,7 @@ let student = {
 
 let developer = {
   // code here
-  hasComputer: true, ...knowledge
+  ...student, ...knowledge
 
 };
 
@@ -29,10 +29,8 @@ let application = ["bug", "code", "code", "code", "code", "code", "code", "code"
 
 
 // code here
-let bug = application[0];
-let code = [application[1], ...application[];
+const [bug, ...code] = application;
 console.log(code);
-
 
 
 module.exports = {
