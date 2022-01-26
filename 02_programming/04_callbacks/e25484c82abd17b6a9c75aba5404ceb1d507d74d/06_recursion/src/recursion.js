@@ -1,6 +1,16 @@
 const findPosition = (arrayToCheck,stringToFind,counter) => {
 
-  if (typeof arrayToCheck !== "object" || typeof stringToFind !== "string" || Number.isInteger(counter) === false){
+  if (Array.isArray(arrayToCheck) === false)
+  {
+    throw "An error";
+  }
+  else if (check(arrayToCheck) === false){
+    throw "An error";
+  }
+  else if (typeof stringToFind !== "string") {
+    throw "An error";
+  }
+  else if (Number.isInteger(counter) === false){
     throw "An error";
   }
   else{
@@ -11,10 +21,13 @@ const findPosition = (arrayToCheck,stringToFind,counter) => {
       return `${stringToFind} is not present in this array.`;
     }
     else {
-      findPosition(arrayToCheck,stringToFind,counter + 1);
+      return findPosition(arrayToCheck,stringToFind,counter + 1);
     }
   }
 };
+function check(x) {
+  return x.every(i => (typeof i === "string"));
+}
 
 // Leave line below for tests to work properly
 module.exports = findPosition;

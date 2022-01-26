@@ -1,5 +1,11 @@
 function howMuchDidIMake(invoices) {
-  // Code here
+  let Money = 0;
+  invoices.forEach((element) => {
+    if (element.waiter === "Yourself") {
+      Money = Money + element.tip;
+    }
+  });
+  return Money;
 }
 
 const invoices = [
