@@ -1,0 +1,1 @@
+import { helloSailor } from "./index";
