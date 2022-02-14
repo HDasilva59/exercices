@@ -2,7 +2,7 @@ export function findDigit(anArrayOfNumbers: number[], numberToFind: number): num
   const resultArray = [];
   for (let i = 0; i < anArrayOfNumbers.length; i++) {
     const numberToString: string = anArrayOfNumbers[i].toString();
-    const numberToFindToString = numberToFind.toString();
+    const numberToFindToString: string = numberToFind.toString();
     if (numberToString.includes(numberToFindToString)) {
       resultArray.push(anArrayOfNumbers[i]);
     }
