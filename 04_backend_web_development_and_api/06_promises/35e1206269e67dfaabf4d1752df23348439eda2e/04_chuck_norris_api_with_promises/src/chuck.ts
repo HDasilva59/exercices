@@ -1,19 +1,22 @@
 import fetch from "node-fetch";
 
-function getCategories(): Promise<string[]> {
-  return fetch("https://api.chucknorris.io/jokes/categories")
-    .then((response) => response.json())
-    .then((result) => result);
-}
+export type Repo = {
+  url: string;
+  name: string;
+  [key: string]: string | number | boolean | null;
+};
 
-function getJoke(category: string): Promise<string> {
-  return fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
-      return result.value;
-    });
-}
+export type GitHub = {
+  message: string;
+  repos_url: string;
+};
 
-// Leave the line below for tests to work properly
-export { getCategories, getJoke };
+export const getReposUrl = async (nickname: string): Promise<string> => {
+  try {
+    const response = await fetch(`https://api.github.com/users/${nickname}`);
+    const repo = await response.json();
+    return repo.url;
+  } catch (error) {
+    throw "user does not exist";
+  }
+};
