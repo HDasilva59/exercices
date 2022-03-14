@@ -5,7 +5,6 @@ export const moviesValidator = {
     $jsonSchema: {
        bsonType: "object",
        required: [ "_id", "title", "genre", "year" ],
-       additionalProperties: false,
        properties: {
           _id: {
              bsonType: "objectId",
