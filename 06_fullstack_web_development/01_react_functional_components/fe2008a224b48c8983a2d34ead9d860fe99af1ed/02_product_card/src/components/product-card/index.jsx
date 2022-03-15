@@ -1,21 +1,20 @@
 import React from "react";
-import zelda from "../../../data/zelda";
 import CardBody from "./body";
 import CardFooter from "./footer";
 import CardHeader from "./header";
 
-const ProductCard = () => {
+const ProductCard = (props) => {
   return (
     <div>
-      <CardHeader name={zelda.name} platformLogos={zelda.platforms} />
+      <CardHeader name={props.product.name} platformLogos={props.product.platforms} />
       <CardBody
-        cover={zelda.cover}
-        summary={zelda.summary}
-        screenshots={zelda.screenshots}
-        genres={zelda.genres}
-        firstReleaseDate={zelda.first_release_date}
+        cover={props.product.cover.url}
+        firstReleaseDate={props.product.first_release_date}
+        genres={props.product.genres}
+        screenshots={props.product.screenshots}
+        summary={props.product.summary}
       />
-      <CardFooter slug={zelda.slug} />
+      <CardFooter slug={props.product.slug} />
     </div>
   );
 };

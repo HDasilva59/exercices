@@ -1,44 +1,40 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const CardBody = (props) => {
-  const [hidden, isHidden] = React.useState(0);
-
+  const [showScreen, setShowscreen] = React.useState(true);
   return (
-    <div className="card-body">
+    <div>
       <img src={props.cover} />
-      {zeldaGenres(props.genres)}
       <p>{props.firstReleaseDate}</p>
+      {props.genres.map((element) => {
+        if (element.name === undefined) {
+          return <p key={uuidv4()}>{element}</p>;
+        } else {
+          return <p key={uuidv4()}>{element.genres}</p>;
+        }
+      })}
       <p>{props.summary}</p>
-      <div>
-        <button onClick={() => isHidden(hidden + 1)}>Click me to {hideOrShow(hidden, props)} the screenshots</button>
-        {results(hidden)}
-      </div>
+      <button onClick={() => setShowscreen(!showScreen)}>Click me to {showOrHide(showScreen)}</button>
+      {showMyScreens(showScreen, props.screenshots)}
     </div>
   );
 };
 
-export default CardBody;
-
-function zeldaGenres(genres) {
-  return <p>{genres.map((element) => element.name)}</p>;
-}
-
-function results(isHidden, props) {
-  if (isHidden % 2 === 0) {
-    {
-      return props.screenshots.map((element) => {
-        <img key={element.url + "screenshot"} src={element.url} />;
-      });
-    }
+function showMyScreens(value, values) {
+  if (!value) {
+    return values.map((element) => <img key={uuidv4()} src={element.url} />);
   } else {
     return;
   }
 }
 
-function hideOrShow(hidden) {
-  if (hidden % 2 === 0) {
-    return "hide";
+function showOrHide(showScreen) {
+  if (showScreen) {
+    return "show screenshots";
   } else {
-    return "show";
+    return "hide screenshots";
   }
 }
+
+export default CardBody;
